@@ -17,10 +17,13 @@ public class LocalConfig {
     UserRepository userRepository;
 
     @Bean
-    public void startDB(){
+    public List<User> startDB(){
         User u1 = new User(122L, "Cuca Belludo", "cuca@beludo.com", "123");
         User u2 = new User(123L, "Maria", "maria@email.com", "456");
 
-        userRepository.saveAll(List.of(u1, u2));
+        userRepository.save(u1);
+        userRepository.save(u2);
+
+        return List.of(u1, u2);
     }
 }
