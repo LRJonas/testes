@@ -45,12 +45,8 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable Long id){
-        var userDel = userService.findByiD(id);
-        if(userDel != null) {
-            userService.delete(id);
-        }else {
-            throw new RuntimeException("Usuário não encontrado");
-        }
+    public ResponseEntity<UserDTO> delete(@PathVariable Long id){
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
